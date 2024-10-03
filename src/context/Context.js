@@ -10,6 +10,7 @@ function Context({ children }) {
     const [location, setLocation] = useState('patna');
     const [weatherData, setWeatherData] = useState(null);
     const [forcast, setForcast] = useState(null);
+    // const [rain, setRain] = useState(null);
 
     const darkHandeler = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
@@ -38,11 +39,31 @@ function Context({ children }) {
         }
     };
 
-    
+    // const latttt = weatherData?.coord;
+    // console.log(latttt,'llll');
 
+    // const fetchRain = async () => {
+    //     const url3 = `https://api.openweathermap.org/data/2.5/weather?lat=25.6&lon=85.1167&appid=${Apikey}`;
+    //     try {
+    //       const res = await fetch(url3);
+    //       if (!res.ok) {
+    //         throw new Error('Failed to fetch rain data');
+    //       }
+    //       const data3 = await res.json();
+    //       console.log(data3, "dataaaaa3");
+    //       const rainChance = data3.daily[0].pop * 100; // Extract rain chance percentage from daily forecast
+    //       setRain(rainChance); // Store rain chance percentage in state
+    //     } catch (error) {
+    //       console.error('Error fetching rain data:', error);
+    //     }
+    //   };
     useEffect(() => {
         Apifeatch(location); // Fetch weather data when component mounts or location changes
     }, [location]);
+
+    // useEffect(()=>{
+    //     fetchRain();
+    // },[weatherData]);
 
     return (
         <storeContext.Provider value={{ theme, darkHandeler, location, setLocation, weatherData, forcast}}>
