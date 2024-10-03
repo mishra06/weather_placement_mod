@@ -232,7 +232,7 @@ function Homepage() {
       <div className="flex w-[50%] justify-center items-center">
         <div className="w-[80%] h-full p-2 flex flex-col justify-evenly ">
           <div>
-            <span className="text-xl underline">7-Day's Forcast</span>
+            <span className="text-xl underline">7-Day's Forecast</span>
           </div>
           <div className="flex flex-col justify-evenly w-full">
             {loading ? (
