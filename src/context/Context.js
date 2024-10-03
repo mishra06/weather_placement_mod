@@ -17,7 +17,7 @@ function Context({ children }) {
 
     const Apifeatch = async (location) => {
         const url = `${API_ENDPOINT}weather?q=${location}&appid=${Apikey}`;
-        const url2 = `${API_ENDPOINT}forecast?q=${location}&appid=${Apikey}`
+        const url2 = `${API_ENDPOINT}forecast?q=${location}&appid=${Apikey}`;
 
         try {
             const response = await fetch(url);
@@ -27,22 +27,25 @@ function Context({ children }) {
             }
             const data = await response.json();
             const data2 = await response2.json();
-            console.log(data,'weather data');
-            console.log(data2.list,'forecast data');
+            console.log(data, 'weather data');
+            console.log(data2.list, 'forecast data');
             
             setWeatherData(data); // Store weather data in state
             setForcast(data2.list); // Store forecast data in state
+
         } catch (error) {
             console.error('Error fetching weather data:', error);
         }
     };
 
-    useEffect(()=>{
-       Apifeatch(location); // Fetch weather data when component mounts
-    },[location])
+    
+
+    useEffect(() => {
+        Apifeatch(location); // Fetch weather data when component mounts or location changes
+    }, [location]);
 
     return (
-        <storeContext.Provider value={{ theme, darkHandeler, location, setLocation, weatherData,forcast }}>
+        <storeContext.Provider value={{ theme, darkHandeler, location, setLocation, weatherData, forcast}}>
             {children}
         </storeContext.Provider>
     );
