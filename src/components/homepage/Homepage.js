@@ -240,7 +240,9 @@ function Homepage() {
             ) : (
               sevenDays &&
               sevenDays.map((items, id) => {
-                const date = items?.datetime;
+                const datess = items?.datetime;
+                const date = new Date(datess);
+                const day = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(date); // day formate
                 const imgs = items?.weather?.icon;
                 const iconUrl = `https://www.weatherbit.io/static/img/icons/${imgs}.png`;
                 const pop = items?.pop;
@@ -250,7 +252,7 @@ function Homepage() {
                     key={id}
                     className="flex items-center justify-evenly w-full gap-4"
                   >
-                    <div className="w-[20%]">{date}</div>
+                    <div className="w-[20%]">{datess}</div>
                     <div className="flex gap-2 justify-center items-center w-[60%]">
                       <img className="h-[70px]" src={iconUrl} alt="" />
                       <span className="text-[12px] font-bold">

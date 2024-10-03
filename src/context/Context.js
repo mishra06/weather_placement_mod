@@ -55,7 +55,7 @@ function Context({ children }) {
                 throw new Error('Failed to fetch weather data');
             }
             const data3 = await res.json();
-            // console.log(data3,'data333');
+            console.log(data3,'data333');
             setSevenDays(data3.data); // Store 7-day forecast data in state
         } catch (error) {
             console.error('Error fetching weather data:', error);
