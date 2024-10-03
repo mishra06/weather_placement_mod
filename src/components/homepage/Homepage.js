@@ -4,13 +4,13 @@ import { lightTheme, darkTheme } from "../../context/style";
 import nightmod from "../../assets/night-mode.png";
 import daymod from "../../assets/day-mode (1).png";
 import { FaTemperatureQuarter } from "react-icons/fa6";
-// import { IoWaterOutline } from "react-icons/io5";
+import { IoWaterOutline } from "react-icons/io5";
 import { FaWind } from "react-icons/fa";
 import { WiHumidity } from "react-icons/wi";
 import { TiWeatherCloudy } from "react-icons/ti";
 
 function Homepage() {
-  const { theme, location, setLocation, weatherData, forcast } =
+  const { theme, location, setLocation, weatherData, forcast, sevenDays } =
     useContext(storeContext);
 
   // Apply the selected theme
@@ -55,9 +55,9 @@ function Homepage() {
       {/* Left section */}
       <div className="flex w-[50%]  h-full flex-col">
         {/* first section */}
-        <div>
+        <div className="flex justify-center items-center">
           <input
-            className="p-2 w-[40vw] bg-slate-200 text-gray-600 rounded-xl"
+            className="p-2 w-[30vw] bg-slate-200 text-gray-600 rounded-xl"
             type="text"
             value={location}
             placeholder="Enter city name..."
@@ -221,7 +221,40 @@ function Homepage() {
       </div>
 
       {/* Right section */}
-      <div className="flex w-[50%]"></div>
+      <div className="flex w-[50%] justify-center items-center">
+        <div className="w-[80%] h-full p-2 flex flex-col justify-evenly ">
+                      <div>
+                        <span className="text-xl underline">7-Day's Forcast</span>
+                      </div>
+                      <div className="flex flex-col justify-evenly  w-full">
+                          {sevenDays && sevenDays.map((items,id)=>{
+                            console.log(items,'itemsss')
+                            const date = items?.datetime;
+                            // console.log(date,'dateeee');
+                            const imgs = items?.weather?.icon;
+                            const iconUrl = `https://www.weatherbit.io/static/img/icons/${imgs}.png`;
+                            const pop = items?.pop;
+                            console.log(pop,'popooo');
+                            
+                            // const precipitationText = pop < 30 ? 'Low' : pop < 60 ? 'Moderate' : 'High';
+                            
+                            return(
+                              <div key={id} className="flex items-center justify-evenly w-full gap-4">
+                                <div className="w-[20%] ">{date}</div>
+                                <div className="flex gap-2 justify-center items-center w-[60%]" >
+                                  <img className="h-[70px]" src={iconUrl} alt="" />
+                                  <span className="text-[12px] font-bold">{items?.weather?.description}</span>
+                                </div>
+                                <div className="w-[20%] flex gap-2">
+                                  <span><IoWaterOutline/></span>
+                                  <span>{pop}%</span>
+                                </div>
+                              </div>
+                            )
+                          })}
+                      </div>
+        </div>
+      </div>
     </div>
   );
 }
