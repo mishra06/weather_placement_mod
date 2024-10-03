@@ -10,8 +10,16 @@ import { WiHumidity } from "react-icons/wi";
 import { TiWeatherCloudy } from "react-icons/ti";
 
 function Homepage() {
-  const { theme, location, setLocation, weatherData, forcast, sevenDays } =
-    useContext(storeContext);
+  const {
+    theme,
+    location,
+    setLocation,
+    weatherData,
+    forcast,
+    sevenDays,
+    loading,
+    ShimmerEffect,
+  } = useContext(storeContext);
 
   // Apply the selected theme
   const appliedTheme = theme === "light" ? lightTheme : darkTheme;
@@ -223,36 +231,43 @@ function Homepage() {
       {/* Right section */}
       <div className="flex w-[50%] justify-center items-center">
         <div className="w-[80%] h-full p-2 flex flex-col justify-evenly ">
-                      <div>
-                        <span className="text-xl underline">7-Day's Forcast</span>
-                      </div>
-                      <div className="flex flex-col justify-evenly  w-full">
-                          {sevenDays && sevenDays.map((items,id)=>{
-                            console.log(items,'itemsss')
-                            const date = items?.datetime;
-                            // console.log(date,'dateeee');
-                            const imgs = items?.weather?.icon;
-                            const iconUrl = `https://www.weatherbit.io/static/img/icons/${imgs}.png`;
-                            const pop = items?.pop;
-                            console.log(pop,'popooo');
-                            
-                            // const precipitationText = pop < 30 ? 'Low' : pop < 60 ? 'Moderate' : 'High';
-                            
-                            return(
-                              <div key={id} className="flex items-center justify-evenly w-full gap-4">
-                                <div className="w-[20%] ">{date}</div>
-                                <div className="flex gap-2 justify-center items-center w-[60%]" >
-                                  <img className="h-[70px]" src={iconUrl} alt="" />
-                                  <span className="text-[12px] font-bold">{items?.weather?.description}</span>
-                                </div>
-                                <div className="w-[20%] flex gap-2">
-                                  <span><IoWaterOutline/></span>
-                                  <span>{pop}%</span>
-                                </div>
-                              </div>
-                            )
-                          })}
-                      </div>
+          <div>
+            <span className="text-xl underline">7-Day's Forcast</span>
+          </div>
+          <div className="flex flex-col justify-evenly w-full">
+            {loading ? (
+              <ShimmerEffect />
+            ) : (
+              sevenDays &&
+              sevenDays.map((items, id) => {
+                const date = items?.datetime;
+                const imgs = items?.weather?.icon;
+                const iconUrl = `https://www.weatherbit.io/static/img/icons/${imgs}.png`;
+                const pop = items?.pop;
+
+                return (
+                  <div
+                    key={id}
+                    className="flex items-center justify-evenly w-full gap-4"
+                  >
+                    <div className="w-[20%]">{date}</div>
+                    <div className="flex gap-2 justify-center items-center w-[60%]">
+                      <img className="h-[70px]" src={iconUrl} alt="" />
+                      <span className="text-[12px] font-bold">
+                        {items?.weather?.description}
+                      </span>
+                    </div>
+                    <div className="w-[20%] flex gap-2">
+                      <span>
+                        <IoWaterOutline />
+                      </span>
+                      <span>{pop}%</span>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
         </div>
       </div>
     </div>
