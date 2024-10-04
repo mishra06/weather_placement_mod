@@ -230,7 +230,7 @@ function Homepage() {
 
       {/* Right section */}
       <div className="flex w-[50%] justify-center items-center">
-        <div className="w-[80%] h-full p-2 flex flex-col justify-evenly ">
+        <div className="w-[70%] h-full p-2 flex flex-col justify-evenly ">
           <div>
             <span className="text-xl underline">7-Day's Forecast</span>
           </div>
@@ -253,9 +253,9 @@ function Homepage() {
                     className="flex items-center justify-evenly w-full gap-4"
                   >
                     <div className="w-[20%]">{datess}</div>
-                    <div className="flex gap-2 justify-center items-center w-[60%]">
+                    <div className="flex gap-2 justify-evenly items-center w-[50%]">
                       <img className="h-[70px]" src={iconUrl} alt="" />
-                      <span className="text-[12px] font-bold">
+                      <span className="text-[13px] font-bold break h-11 w-[38%]">
                         {items?.weather?.description}
                       </span>
                     </div>

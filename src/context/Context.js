@@ -1,11 +1,13 @@
 import React, { createContext, useEffect, useState } from 'react';
 
+
 export const storeContext = createContext(null);
 
 const Apikey = 'e6d9f3cac0593e8f8de4da7112ed38ef';
 const Apikey2 = '746a6f8971d24f018fff1b57ef5b6713';
 const API_ENDPOINT = 'https://api.openweathermap.org/data/2.5/';
 const Api_endPoint2 = 'https://api.weatherbit.io/v2.0/'
+// 
 
 function Context({ children }) {
     const [theme, setTheme] = useState('light');
@@ -14,6 +16,9 @@ function Context({ children }) {
     const [forcast, setForcast] = useState(null);
     const [sevenDays, setSevenDays] = useState(null);
     const [loading , setLoading] = useState(true);
+
+    // const token = process.env.Apikey;
+    // const token2 = process.env.Apikey2;
 
     const darkHandeler = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
