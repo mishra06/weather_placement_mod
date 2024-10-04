@@ -59,7 +59,7 @@ function Homepage() {
     currentHour >= 18 || currentHour < 6 ? nightmod : daymod;
 
   return (
-    <div style={appliedTheme} className="h-[90vh] flex w-full p-4 ">
+    <div style={appliedTheme} className="h-[93vh] flex w-full p-4 ">
       {/* Left section */}
       <div className="flex w-[50%]  h-full flex-col">
         {/* first section */}
@@ -151,8 +151,8 @@ function Homepage() {
                       <p className="text-xl font-bold">Real Feel</p>
                     </span>
                   </div>
-                  <div className="ml-8">
-                    <span className="text-2xl font-bold">
+                  <div className="ml-10">
+                    <span className="text-xl font-semibold">
                       {feelsCelsius !== null ? (
                         <span>{feelsCelsius.toFixed(0)}°C</span>
                       ) : (
@@ -170,8 +170,8 @@ function Homepage() {
                       <p className="text-xl font-bold">Weather Phenomena</p>
                     </span>
                   </div>
-                  <div className="ml-8">
-                    <span className="text-2xl font-bold">
+                  <div className="ml-10">
+                    <span className="text-xl font-semibold">
                       {weatherData?.weather[0]?.main ? (
                         <span>{weatherData.weather[0].main}</span>
                       ) : (
@@ -193,8 +193,8 @@ function Homepage() {
                       <p className="text-xl font-bold">Wind</p>
                     </span>
                   </div>
-                  <div className="ml-8">
-                    <span className="text-2xl font-bold">
+                  <div className="ml-10">
+                    <span className="text-xl font-semibold">
                       {wind > 0 ? (
                         <span>{`${wind} km/h`}</span>
                       ) : (
@@ -212,8 +212,8 @@ function Homepage() {
                       <p className="text-xl font-bold">Humidity</p>
                     </span>
                   </div>
-                  <div className="ml-8">
-                    <span className="text-2xl font-bold">
+                  <div className="ml-10">
+                    <span className="text-xl font-semibold">
                       {weatherData?.main?.humidity > 0 ? (
                         <span>{`${weatherData?.main?.humidity} %`}</span>
                       ) : (

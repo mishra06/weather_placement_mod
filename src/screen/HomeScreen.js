@@ -4,7 +4,7 @@ import Homepage from '../components/homepage/Homepage'
 
 function HomeScreen() {
   return (
-    <div>
+    <div className=''>
       <Navbar/>
       <Homepage/>
     </div>
