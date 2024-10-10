@@ -47,11 +47,7 @@ function Context({ children }) {
         }
     };
 
-    // const latt = weatherData?.coord;
-    // console.log(latt,'llll');
-
     const Apifeatch2 = async()=>{
-        // if (!weatherData) return; // exit if weatherData is null or undefined
         const lated = weatherData?.coord;
         const url3 = `${Api_endPoint2}forecast/daily?lat=${lated?.lat}&lon=${lated?.lon}&days=7&key=${Apikey2}`;
         try {

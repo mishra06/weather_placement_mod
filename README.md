@@ -1,3 +1,8 @@
+
+*Hosted Link of the Project -- https://weather-placement-mod.vercel.app/*
+
+![Screenshot 2024-09-23 000608](/src/assets/Screenshot%202024-10-10%20135611.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
